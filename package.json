@@ -16,9 +16,11 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "gatsby": "^5.13.3",
     "gatsby-plugin-sass": "^6.13.1",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.2",
     "sass": "^1.72.0"
