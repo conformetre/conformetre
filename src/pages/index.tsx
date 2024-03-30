@@ -1,33 +1,30 @@
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import type { HeadFC } from "gatsby"
+import { useForm } from "react-hook-form"
+import { searchDPE } from "../lib/";
 
-function SimpleForm() {
-  return (
-    <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
-  );
+type Inputs = {
+  address: string
 }
 
-export default SimpleForm
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export default function DetailedForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>()
+
+  return (
+    <form onSubmit={handleSubmit((data) => searchDPE(data.address))}>
+      {/* register your input into the hook by invoking the "register" function */}
+      <input defaultValue="3 place Grenette, 38000 Grenoble" {...register("address", { required: true })} />
+      {errors.address && <span>This field is required</span>}
+
+      <input type="submit" />
+    </form>
+  )
+}
+
+export const Head: HeadFC = () => <title>Conformètre</title>

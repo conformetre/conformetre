@@ -1,0 +1,1 @@
+export { searchDPE } from "./searchDPE";
