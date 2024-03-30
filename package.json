@@ -1,19 +1,31 @@
 {
   "name": "conformetre",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "conformetre",
+  "author": "qloridant",
+  "keywords": [
+    "gatsby"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/qloridant/conformetre.git"
+  "dependencies": {
+    "gatsby": "^5.13.3",
+    "gatsby-plugin-sass": "^6.13.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.72.0"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/qloridant/conformetre/issues"
-  },
-  "homepage": "https://github.com/qloridant/conformetre#readme"
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "typescript": "^5.3.3"
+  }
 }
