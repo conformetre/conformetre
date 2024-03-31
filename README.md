@@ -1,6 +1,6 @@
-# Conformètre BETA
+# Conformètre TITA
 
-Le conformètre BETA est une questionnaire accessible en ligne qui permet l'auto-identification de personnes en situation de précarité énérgétique, ainsi que leur accompagnement.
+Le conformètre TITA est une questionnaire accessible en ligne qui permet l'auto-identification de personnes en situation de précarité énérgétique, ainsi que leur accompagnement.
 
 Cet outil est basé sur la [version en ligne](https://form.jotform.com/210332496458357) du Conformètre, développé par la [chaire Hope de Grenoble INP](https://www.precarite-energie.org/le-conformetre-chaire-hope/).
 
