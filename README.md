@@ -7,3 +7,8 @@ Cet outil est basé sur la [version en ligne](https://form.jotform.com/210332496
 Il est développé dans le cadre du [Civiclab](https://grenoble.civiclab.eu/)
 
 ![](https://grenoble.civiclab.eu/wp-content/uploads/2023/10/GCL4-Logo-site-bleu.png)
+
+## Dev
+
+* Installer [gatsby](https://www.gatsbyjs.com/)
+* Lancer le projet : `gatsby develop`
