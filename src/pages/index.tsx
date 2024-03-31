@@ -19,7 +19,7 @@ export default function DetailedForm() {
   return (
     <form onSubmit={handleSubmit((data) => searchDPE(data.address))}>
       {/* register your input into the hook by invoking the "register" function */}
-      <input defaultValue="3 place Grenette, 38000 Grenoble" {...register("address", { required: true })} />
+      <input defaultValue="1 Allee Sainte Therese 38700 Corenc" {...register("address", { required: true })} />
       {errors.address && <span>This field is required</span>}
 
       <input type="submit" />
