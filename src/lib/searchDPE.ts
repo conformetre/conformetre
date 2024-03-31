@@ -24,8 +24,13 @@ async function getDPE({ lon, lat }: Coord) {
     console.log(url)
     const response = await (await fetch(url)).json();
     return {
-        classe_consommation_energie: response.results[0].classe_consommation_energie,
-        geo_adresse: response.results[0].geo_adresse,
-        annee_construction: response.results[0].annee_construction
+        surface: response.results[0]['Surface_habitable_logement'],
+        conso_annuelle_m2: response.results[0]['Conso_5_usages/m²_é_finale'],
+        dpe: response.results[0]['Etiquette_DPE'],
+        ges: response.results[0]['Etiquette_GES'],
+        annee_construction: response.results[0]['Année_construction'],
+        num_addresse: response.results[0]['N°_voie_(BAN)'],
+        nom_rue: response.results[0]['Nom__rue_(BAN)'],
+        commune: response.results[0]['Nom__commune_(BAN)'],
     }
 }
