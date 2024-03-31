@@ -1,5 +1,5 @@
 
-const dpeEndpoint = "https://data.ademe.fr/data-fair/api/v1/datasets/dpe-france/lines/?select=classe_consommation_energie%2Cannee_construction%2Cgeo_adresse"
+const dpeEndpoint = "https://data.ademe.fr/data-fair/api/v1/datasets/dpe-v2-logements-existants/lines?select=N%C2%B0DPE%2CEtiquette_GES%2CEtiquette_DPE%2CAnn%C3%A9e_construction%2CNom__commune_(BAN)%2CN%C2%B0_voie_(BAN)%2CNom__rue_(BAN)%2CConso_5_usages%2Fm%C2%B2_%C3%A9_finale%2CSurface_habitable_logement"
 const adressEnpoint = "https://api-adresse.data.gouv.fr/search/";
 
 type Coord = { lon: number, lat: number };
