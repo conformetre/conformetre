@@ -36,7 +36,7 @@ export default function QuantiResults({ conso_annuelle_m2, dpe, minRevenue, surf
       </div>
       <Stack direction="horizontal" gap={2}>
         <Card border="warning" style={{ width: '18rem' }}>
-          <Card.Header>Les revenus de votre foyer sont inférieurs à {formattedMinRevenue}</Card.Header>
+          <Card.Header>Les revenus de votre foyer sont inférieurs à <b>{formattedMinRevenue}</b></Card.Header>
           <Card.Body>
             <Card.Title>Vous êtes probablement en précarité énergétique</Card.Title>
             <Card.Text>
@@ -46,7 +46,7 @@ export default function QuantiResults({ conso_annuelle_m2, dpe, minRevenue, surf
           </Card.Body>
         </Card>
         <Card border="info" style={{ width: '18rem' }}>
-          <Card.Header>Les revenus de votre foyer sont supérieurs à {formattedMinRevenue}</Card.Header>
+          <Card.Header>Les revenus de votre foyer sont supérieurs à <b>{formattedMinRevenue}</b></Card.Header>
           <Card.Body>
             <Card.Title>Vous n'êtes probablement pas en précarité énergétique</Card.Title>
             <Card.Text>
