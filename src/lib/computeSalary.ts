@@ -18,7 +18,7 @@ export type EconmicResults = {
     yearlyCost: number;
 }
 
-function fetch_threshold_salary(result: EstimatedResults): EconmicResults {
+export function computeSalary(result: EstimatedResults): EconmicResults {
     const yearlyCost: number = consommations_m2[result.dpe] * result.surface * elecPrice
     return {
         minRevenue: result.surface / threshold_tee,

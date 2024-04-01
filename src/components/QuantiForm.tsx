@@ -4,10 +4,13 @@ import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { searchDPE } from "../lib/";
+import type { EstimatedResults } from "../lib/";
 
+type Props = {
+  handleNewEstimation: (results: EstimatedResults) => void;
+}
 
-
-export default function QuantiForm() {
+export default function QuantiForm({ handleNewEstimation }: Props) {
   const {
     register,
     handleSubmit,
@@ -32,13 +35,19 @@ export default function QuantiForm() {
           />
         </Form.Group>
         <Button
-          onClick={handleSubmit((data) => searchDPE(data.address))}
+          onClick={handleSubmit(async (data) => searchDPEAndHandleRes(data.address))}
           variant="primary">
             Submit
         </Button>
       </Stack>
       <pre>{JSON.stringify(watch(), null, 2)}</pre>
-
     </Form>
   )
+
+  async function searchDPEAndHandleRes(address: string) {
+    const results = await searchDPE(address);
+    if (! results) { return; }
+
+    handleNewEstimation(results);
+  }
 }
