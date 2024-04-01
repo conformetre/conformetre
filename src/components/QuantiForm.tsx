@@ -17,7 +17,7 @@ export default function QuantiForm() {
   } = useForm<{ address: string }>()
 
   const label = "Entrez votre adresse postale";
-  const placeholder = "1 Allee Sainte Therese 38700 Corenc";
+  const placeholder = "14 Allee Sainte Therese 38700 Corenc";
 
   return (
     <Form>

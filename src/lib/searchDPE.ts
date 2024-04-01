@@ -6,7 +6,7 @@ type Coord = { lon: number, lat: number };
 
 export async function searchDPE(address: string) {
     const coord = await getCoord(address)
-    getDPE(coord)
+    return getDPE(coord, address)
 }
 
 async function getCoord(address: string): Promise<Coord> {
@@ -18,11 +18,32 @@ async function getCoord(address: string): Promise<Coord> {
     }
 }
 
-async function getDPE({ lon, lat }: Coord) {
+type MonType = {
+    surface: string;
+    conso_annuelle_m2: string;
+    dpe: string;
+    ges: string;
+    annee_construction: string;
+    num_addresse: string;
+    nom_rue: string;
+    commune: string;
+};
+
+function validateAddress(returned_address_number: string, provided_address: string): Boolean {
+    return provided_address.includes(returned_address_number)
+}
+
+async function getDPE({ lon, lat }: Coord, address: string): Promise<MonType | null> {
     const coord = `${lon}:${lat}`;
     const url = `${dpeEndpoint}&geo_distance=${encodeURIComponent(coord)},50`;
     console.log(url)
     const response = await (await fetch(url)).json();
+    if (!validateAddress(response.results[0]['N°_voie_(BAN)'], address)) {
+        console.log('The adress returned by ADEME does not match the provided address')
+        console.log(address)
+        console.log(response.results[0]['N°_voie_(BAN)'])
+        return null;
+    }
     return {
         surface: response.results[0]['Surface_habitable_logement'],
         conso_annuelle_m2: response.results[0]['Conso_5_usages/m²_é_finale'],
