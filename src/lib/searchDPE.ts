@@ -18,7 +18,7 @@ async function getCoord(address: string): Promise<Coord> {
     }
 }
 
-type EstimatedResults = {
+export type EstimatedResults = {
     surface: number;
     conso_annuelle_m2: number;
     dpe: string;
@@ -27,8 +27,6 @@ type EstimatedResults = {
     num_addresse: string;
     nom_rue: string;
     commune: string;
-    // minRevenue: number;
-    // yearlyCost: number;
 };
 
 function validateAddress(returned_address_number: string, provided_address: string): Boolean {
