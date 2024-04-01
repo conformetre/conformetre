@@ -12,7 +12,7 @@ type Inputs = {
 }
 
 export default function DetailedForm() {
-  const [quantiInfo, setQuantiInfo] = React.useState<(EstimatedResults & EconmicResults) | null>(null);
+  const [formResult, setFormResult] = React.useState<(EstimatedResults & EconmicResults) | null>(null);
 
   return (
     <Container>
@@ -22,13 +22,13 @@ export default function DetailedForm() {
       <QuantiForm
         handleNewEstimation={handleNewEstimation}
       />
-      { quantiInfo && (
+      { formResult && (
         <QuantiResults
-          conso_annuelle_m2={quantiInfo.surface}
-          dpe={quantiInfo.dpe}
-          minRevenue={quantiInfo.minRevenue}
-          surface={quantiInfo.surface}
-          yearlyCost={quantiInfo.yearlyCost}
+          conso_annuelle_m2={formResult.surface}
+          dpe={formResult.dpe}
+          minRevenue={formResult.minRevenue}
+          surface={formResult.surface}
+          yearlyCost={formResult.yearlyCost}
         />
       )}
 
@@ -36,7 +36,7 @@ export default function DetailedForm() {
   )
 
   function handleNewEstimation(estimation: EstimatedResults) {
-    setQuantiInfo({
+    setFormResult({
       ...estimation,
       ...computeSalary(estimation)
     });
