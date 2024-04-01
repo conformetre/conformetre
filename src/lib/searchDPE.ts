@@ -18,22 +18,24 @@ async function getCoord(address: string): Promise<Coord> {
     }
 }
 
-type MonType = {
-    surface: string;
-    conso_annuelle_m2: string;
+type EstimatedResults = {
+    surface: number;
+    conso_annuelle_m2: number;
     dpe: string;
     ges: string;
     annee_construction: string;
     num_addresse: string;
     nom_rue: string;
     commune: string;
+    // minRevenue: number;
+    // yearlyCost: number;
 };
 
 function validateAddress(returned_address_number: string, provided_address: string): Boolean {
     return provided_address.includes(returned_address_number)
 }
 
-async function getDPE({ lon, lat }: Coord, address: string): Promise<MonType | null> {
+async function getDPE({ lon, lat }: Coord, address: string): Promise<EstimatedResults | null> {
     const coord = `${lon}:${lat}`;
     const url = `${dpeEndpoint}&geo_distance=${encodeURIComponent(coord)},50`;
     console.log(url)
