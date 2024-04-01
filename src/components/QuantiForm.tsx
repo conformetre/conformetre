@@ -6,8 +6,19 @@ import Button from 'react-bootstrap/Button';
 import { searchDPE } from "../lib/";
 
 
+export type QuantiInfo = {
+  conso_annuelle_m2: number;
+  dpe: string;
+  // minRevenue: number;
+  surface: number;
+  // yearlyCost: number;
+}
 
-export default function QuantiForm() {
+type Props = {
+  handleNewEstimation: (results: QuantiInfo) => void;
+}
+
+export default function QuantiForm({ handleNewEstimation }: Props) {
   const {
     register,
     handleSubmit,
@@ -32,13 +43,19 @@ export default function QuantiForm() {
           />
         </Form.Group>
         <Button
-          onClick={handleSubmit((data) => searchDPE(data.address))}
+          onClick={handleSubmit(async (data) => searchDPEAndHandleRes(data.address))}
           variant="primary">
             Submit
         </Button>
       </Stack>
       <pre>{JSON.stringify(watch(), null, 2)}</pre>
-
     </Form>
   )
+
+  async function searchDPEAndHandleRes(address: string) {
+    const results = await searchDPE(address);
+    if (! results) { return; }
+
+    handleNewEstimation(results);
+  }
 }
