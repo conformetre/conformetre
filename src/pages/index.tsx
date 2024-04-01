@@ -3,16 +3,16 @@ import * as React from "react"
 import type { HeadFC } from "gatsby"
 import Container from 'react-bootstrap/Container';
 import { QualificationForm, QuantiForm, QuantiResults } from '../components';
-import type { QuantiInfo } from '../components';
+import { computeSalary } from "../lib";
+import type { EconmicResults, EstimatedResults } from "../lib";
 
 
 type Inputs = {
   address: string
 }
 
-
 export default function DetailedForm() {
-  const [quantiInfo, setQuantiInfo] = React.useState<QuantiInfo | null>(null);
+  const [quantiInfo, setQuantiInfo] = React.useState<(EstimatedResults & EconmicResults) | null>(null);
 
   return (
     <Container>
@@ -20,20 +20,27 @@ export default function DetailedForm() {
       <h2>Testez votre confort en un éclair !</h2>
       <QualificationForm/>
       <QuantiForm
-        handleNewEstimation={setQuantiInfo}
+        handleNewEstimation={handleNewEstimation}
       />
       { quantiInfo && (
         <QuantiResults
           conso_annuelle_m2={quantiInfo.surface}
           dpe={quantiInfo.dpe}
-          minRevenue={1800}
+          minRevenue={quantiInfo.minRevenue}
           surface={quantiInfo.surface}
-          yearlyCost={920}
+          yearlyCost={quantiInfo.yearlyCost}
         />
       )}
 
     </Container>
   )
+
+  function handleNewEstimation(estimation: EstimatedResults) {
+    setQuantiInfo({
+      ...estimation,
+      ...computeSalary(estimation)
+    });
+  }
 }
 
 export const Head: HeadFC = () => <title>Conformètre</title>

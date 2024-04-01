@@ -4,18 +4,10 @@ import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { searchDPE } from "../lib/";
-
-
-export type QuantiInfo = {
-  conso_annuelle_m2: number;
-  dpe: string;
-  // minRevenue: number;
-  surface: number;
-  // yearlyCost: number;
-}
+import type { EstimatedResults } from "../lib/";
 
 type Props = {
-  handleNewEstimation: (results: QuantiInfo) => void;
+  handleNewEstimation: (results: EstimatedResults) => void;
 }
 
 export default function QuantiForm({ handleNewEstimation }: Props) {
