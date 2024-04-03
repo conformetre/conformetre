@@ -10,18 +10,18 @@ type Option = {
 type Props = {
   conso_annuelle_m2: number;
   dpe: string;
-  minRevenue: number;
   surface: number;
   yearlyCost: number;
+  yearlyMinRevenue: number;
 }
 
 
-export default function QuantiResults({ conso_annuelle_m2, dpe, minRevenue, surface, yearlyCost }: Props) {
+export default function QuantiResults({ conso_annuelle_m2, dpe, surface, yearlyCost, yearlyMinRevenue }: Props) {
 
   const formattedMinRevenue = new Intl.NumberFormat(
     'fr-FR',
     { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }
-  ).format(minRevenue);
+  ).format(yearlyMinRevenue/12);
   const formattedYearlyConso = new Intl.NumberFormat(
     'fr-FR',
     { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }
@@ -36,7 +36,7 @@ export default function QuantiResults({ conso_annuelle_m2, dpe, minRevenue, surf
       </div>
       <Stack direction="horizontal" gap={2}>
         <Card border="warning" style={{ width: '18rem' }}>
-          <Card.Header>Les revenus de votre foyer sont inférieurs à <b>{formattedMinRevenue}</b></Card.Header>
+          <Card.Header>Les revenus mensuels de votre foyer sont inférieurs à <b>{formattedMinRevenue}</b></Card.Header>
           <Card.Body>
             <Card.Title>Vous êtes probablement en précarité énergétique</Card.Title>
             <Card.Text>
@@ -46,7 +46,7 @@ export default function QuantiResults({ conso_annuelle_m2, dpe, minRevenue, surf
           </Card.Body>
         </Card>
         <Card border="info" style={{ width: '18rem' }}>
-          <Card.Header>Les revenus de votre foyer sont supérieurs à <b>{formattedMinRevenue}</b></Card.Header>
+          <Card.Header>Les revenus mensuels de votre foyer sont supérieurs à <b>{formattedMinRevenue}</b></Card.Header>
           <Card.Body>
             <Card.Title>Vous n'êtes probablement pas en précarité énergétique</Card.Title>
             <Card.Text>
