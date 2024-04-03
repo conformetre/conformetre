@@ -25,7 +25,7 @@ export default function DetailedForm() {
         <QuantiResults
           conso_annuelle_m2={formResult.surface}
           dpe={formResult.dpe}
-          minRevenue={formResult.minRevenue}
+          yearlyMinRevenue={formResult.minRevenue}
           surface={formResult.surface}
           yearlyCost={formResult.yearlyCost}
         />
