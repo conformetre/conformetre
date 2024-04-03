@@ -14,7 +14,7 @@ export type EconmicResults = {
 export function computeSalary(result: Pick<EstimatedResults, "dpe" | "surface">): EconmicResults {
     const yearlyCost = consommations_m2_by_dpe[result.dpe] * result.surface * elecPrice;
     return {
-        minRevenue: result.surface / threshold_tee,
+        minRevenue: yearlyCost / threshold_tee,
         yearlyCost: yearlyCost
     };
 }
