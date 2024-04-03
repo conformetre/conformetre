@@ -2,8 +2,8 @@ import { consommations_m2_by_dpe } from "./dpe";
 import type { EstimatedResults } from "../lib/";
 
 
-const elecPrice: number = 0.25;
-const threshold_tee: number = 0.08;
+const elecPrice = 0.25;
+const threshold_tee = 0.08;
 
 
 export type EconmicResults = {
@@ -12,7 +12,7 @@ export type EconmicResults = {
 };
 
 export function computeSalary(result: Pick<EstimatedResults, "dpe" | "surface">): EconmicResults {
-    const yearlyCost: number = consommations_m2_by_dpe[result.dpe] * result.surface * elecPrice;
+    const yearlyCost = consommations_m2_by_dpe[result.dpe] * result.surface * elecPrice;
     return {
         minRevenue: result.surface / threshold_tee,
         yearlyCost: yearlyCost
