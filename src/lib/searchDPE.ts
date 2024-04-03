@@ -5,8 +5,13 @@ const adressEnpoint = "https://api-adresse.data.gouv.fr/search/";
 type Coord = { lon: number, lat: number };
 
 export async function searchDPE(address: string) {
-    const coord = await getCoord(address)
-    return getDPE(coord, address)
+    try {
+        const coord = await getCoord(address);
+        return getDPE(coord, address);
+    } catch (error) {
+        console.log("error", error);
+        return null;
+    }
 }
 
 async function getCoord(address: string): Promise<Coord> {
