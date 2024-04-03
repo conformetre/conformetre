@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as React from "react"
 import type { HeadFC } from "gatsby"
 import Container from 'react-bootstrap/Container';
-import { QualificationForm, AddressForm, QuantiResults } from '../components';
+import { AddressForm, DpeAndSurfaceForm, QualificationForm, QuantiResults } from '../components';
 import { computeSalary } from "../lib";
 import type { EconmicResults, EstimatedResults } from "../lib";
 
@@ -19,6 +19,7 @@ export default function DetailedForm() {
       <h1>Conformètre</h1>
       <h2>Testez votre confort en un éclair !</h2>
       <QualificationForm/>
+      <DpeAndSurfaceForm/>
       <AddressForm
         handleNewEstimation={handleNewEstimation}
       />
