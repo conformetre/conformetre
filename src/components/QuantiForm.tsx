@@ -42,7 +42,7 @@ export default function QuantiForm({ handleNewEstimation }: Props) {
             Submit
         </Button>
         { showNotFoundError && (
-          <Alert variant="warning">
+          <Alert variant="warning" onClose={() => setShowNotFoundError(false)} dismissible>
             Nous n'avons pas trouvé les informations pour votre adresse, essayez une autre méthode de calcul.
           </Alert>
         )}
