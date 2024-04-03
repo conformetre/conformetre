@@ -11,7 +11,7 @@ type Props = {
   handleNewEstimation: (results: EstimatedResults) => void;
 }
 
-export default function QuantiForm({ handleNewEstimation }: Props) {
+export default function AddressForm({ handleNewEstimation }: Props) {
   const {
     register,
     handleSubmit,
