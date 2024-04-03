@@ -12,7 +12,7 @@ type Inputs = {
 }
 
 export default function DetailedForm() {
-  const [formResult, setFormResult] = React.useState<(EstimatedResults & EconmicResults) | null>(null);
+  const [formResult, setFormResult] = React.useState<(Pick<EstimatedResults, "dpe" | "surface"> & EconmicResults) | null>(null);
 
   return (
     <Container>
@@ -21,7 +21,7 @@ export default function DetailedForm() {
       <QualificationForm/>
       <DpeAndSurfaceForm/>
       <AddressForm
-        handleNewEstimation={handleNewEstimation}
+        handleNewEstimation={computeAndShowResults}
       />
       { formResult && (
         <QuantiResults
@@ -36,7 +36,7 @@ export default function DetailedForm() {
     </Container>
   )
 
-  function handleNewEstimation(estimation: EstimatedResults) {
+  function computeAndShowResults(estimation: Pick<EstimatedResults, "dpe" | "surface">) {
     setFormResult({
       ...estimation,
       ...computeSalary(estimation)
