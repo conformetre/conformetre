@@ -19,7 +19,7 @@ export default function DetailedForm() {
       <h1>Conformètre</h1>
       <h2>Testez votre confort en un éclair !</h2>
       <QualificationForm/>
-      <DpeAndSurfaceForm/>
+      <DpeAndSurfaceForm onNewResponses={computeAndShowResults}/>
       <AddressForm
         handleNewEstimation={computeAndShowResults}
       />

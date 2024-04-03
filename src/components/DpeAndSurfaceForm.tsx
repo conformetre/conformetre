@@ -8,12 +8,16 @@ import InputWithLabel from "./InputWithLabel";
 import type { DpeId } from "../lib";
 
 
+type Props = {
+  onNewResponses: (responses: FormResponses) => void;
+}
+
 type FormResponses = {
   dpe: DpeId;
   surface: number;
 };
 
-export default function DpeAndSurfaceForm() {
+export default function DpeAndSurfaceForm({ onNewResponses }: Props) {
   const {
     register,
     handleSubmit,
@@ -41,7 +45,7 @@ export default function DpeAndSurfaceForm() {
           type="number"
         />
         <Button
-          onClick={handleSubmit(async (data) => console.log(data))}
+          onClick={handleSubmit(onNewResponses)}
           variant="primary">
             Submit
         </Button>
