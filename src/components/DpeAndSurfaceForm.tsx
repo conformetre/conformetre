@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Stack from 'react-bootstrap/Stack';
+import DpeSelector from "./DpeSelector";
 import InputWithLabel from "./InputWithLabel";
+import type { DpeId } from "../lib";
 
 
 type FormResponses = {
-  dpe: string;
+  dpe: DpeId;
   surface: number;
 };
 
@@ -26,12 +28,10 @@ export default function DpeAndSurfaceForm() {
   return (
     <Form>
       <Stack gap={4}>
-        <InputWithLabel
+        <DpeSelector
           id="dpe"
           label={dpeLabel}
-          placeholder={dpePlaceholder}
           register={register("dpe", { required: true })}
-          type="text"
         />
         <InputWithLabel
           id="surface"
