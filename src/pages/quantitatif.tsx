@@ -2,20 +2,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as React from "react"
 import type { HeadFC } from "gatsby"
 import Container from 'react-bootstrap/Container';
-import { QualificationForm } from '../components';
+import { AddressForm, DpeAndSurfaceForm, QuantiResults } from '../components';
 import { computeSalary } from "../lib";
 import type { EconmicResults, EstimatedResults } from "../lib";
 
 
-export default function HomePage() {
+export default function QuantitativePage() {
   const [formResult, setFormResult] = React.useState<(Pick<EstimatedResults, "dpe" | "surface"> & EconmicResults) | null>(null);
 
   return (
     <Container>
       <h1>Conformètre</h1>
-      <h2>Testez votre confort en un éclair !</h2>
-      <QualificationForm/>
-      Obtenez plus d'informations grace au <a href="/quantitatif">questionnaire quantitatif</a>.
+      <h2>Questionnaire quantitatif</h2>
+      <DpeAndSurfaceForm onNewResponses={computeAndShowResults}/>
+      <AddressForm handleNewEstimation={computeAndShowResults}/>
+      { formResult && (
+        <QuantiResults
+          conso_annuelle_m2={formResult.surface}
+          dpe={formResult.dpe}
+          yearlyMinRevenue={formResult.minRevenue}
+          surface={formResult.surface}
+          yearlyCost={formResult.yearlyCost}
+        />
+      )}
+
     </Container>
   )
 
@@ -27,5 +37,5 @@ export default function HomePage() {
   }
 }
 
-export const Head: HeadFC = () => <title>Conformètre</title>
+export const Head: HeadFC = () => <title>Conformètre - quantitatif</title>
 
