@@ -5,13 +5,14 @@ import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { searchDPE } from "../lib/";
+import InputWithLabel from "./InputWithLabel";
 import type { EstimatedResults } from "../lib/";
 
 type Props = {
   handleNewEstimation: (results: EstimatedResults) => void;
 }
 
-export default function QuantiForm({ handleNewEstimation }: Props) {
+export default function AddressForm({ handleNewEstimation }: Props) {
   const {
     register,
     handleSubmit,
@@ -27,15 +28,14 @@ export default function QuantiForm({ handleNewEstimation }: Props) {
   return (
     <Form>
       <Stack gap={4}>
-        <Form.Group controlId="address">
-          <Form.Label>{label}</Form.Label>
-          <Form.Control
-            type="address"
-            placeholder={placeholder}
-            defaultValue={placeholder}
-            {...register("address", { required: true })}
-          />
-        </Form.Group>
+        <InputWithLabel
+          defaultValue={placeholder}
+          id="address"
+          label={label}
+          placeholder={placeholder}
+          register={register("address", { required: true })}
+          type="address"
+        />
         <Button
           onClick={handleSubmit(async (data) => searchDPEAndHandleRes(data.address))}
           variant="primary">

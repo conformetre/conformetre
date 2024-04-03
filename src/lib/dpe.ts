@@ -1,4 +1,4 @@
-const DPE_IDS = ["A", "B", "C", "D", "E", "F", "G"] as const;
+export const DPE_IDS = ["A", "B", "C", "D", "E", "F", "G"] as const;
 export type DpeId = typeof DPE_IDS[number];
 
 export const consommations_m2_by_dpe: Record<DpeId, number> = {
