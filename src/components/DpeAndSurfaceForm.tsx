@@ -8,7 +8,7 @@ import InputWithLabel from "./InputWithLabel";
 
 type FormResponses = {
   dpe: string;
-  surface: string;
+  surface: number;
 };
 
 export default function DpeAndSurfaceForm() {
@@ -37,8 +37,8 @@ export default function DpeAndSurfaceForm() {
           id="surface"
           label={surfaceLabel}
           placeholder={surfacePlaceholder}
-          register={register("surface", { required: true })}
-          type="text"
+          register={register("surface", { required: true, valueAsNumber: true })}
+          type="number"
         />
         <Button
           onClick={handleSubmit(async (data) => console.log(data))}
