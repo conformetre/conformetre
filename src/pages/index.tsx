@@ -20,9 +20,7 @@ export default function DetailedForm() {
       <h2>Testez votre confort en un éclair !</h2>
       <QualificationForm/>
       <DpeAndSurfaceForm onNewResponses={computeAndShowResults}/>
-      <AddressForm
-        handleNewEstimation={computeAndShowResults}
-      />
+      <AddressForm handleNewEstimation={computeAndShowResults}/>
       { formResult && (
         <QuantiResults
           conso_annuelle_m2={formResult.surface}
