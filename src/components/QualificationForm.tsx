@@ -17,9 +17,10 @@ type FormResponses = {
 }
 
 type ClosedQuestionProps = {
-  name: keyof FormResponses;
+  questionId: keyof FormResponses;
   question: string;
   options: {
+    id: string;
     label: string;
     value: string;
   }[]
@@ -27,39 +28,39 @@ type ClosedQuestionProps = {
 
 const questions: ClosedQuestionProps[] = [
   {
-    name: "temperature",
+    questionId: "temperature",
     question: "En hiver dans mon logement j'ai :",
     options: [
-      { value: "0", label: "Très froid" },
-      { value: "3", label: "Froid" },
-      { value: "6", label: "Une bonne température" }
+      { id: "0", value: "0", label: "Très froid" },
+      { id: "3", value: "3", label: "Froid" },
+      { id: "6", value: "6", label: "Une bonne température" }
     ]
   },
   {
-    name: "humidity",
+    questionId: "humidity",
     question: "Dans mes pièces de vie (cuisine, salon, chambre) j'ai :",
     options: [
-      { value: "0", label: "De l'humidité et des moisissures" },
-      { value: "3", label: "De l'humidité" },
-      { value: "6", label: "Une atmosphère saine" }
+      { id: "0", value: "0", label: "De l'humidité et des moisissures" },
+      { id: "3", value: "3", label: "De l'humidité" },
+      { id: "6", value: "6", label: "Une atmosphère saine" }
     ]
   },
   {
-    name: "wind",
+    questionId: "wind",
     question: "A l'intérieur je ressens des courants d'air :",
     options: [
-      { value: "0", label: "Souvent" },
-      { value: "2", label: "Parfois" },
-      { value: "4", label: "Jamais" }
+      { id: "0", value: "0", label: "Souvent" },
+      { id: "2", value: "2", label: "Parfois" },
+      { id: "4", value: "4", label: "Jamais" }
     ]
   },
   {
-    name: "resources",
+    questionId: "resources",
     question: "Il m'arrive de me priver (alimentation, loisirs) pour payer ma facture d'énergie :",
     options: [
-      { value: "0", label: "Souvent" },
-      { value: "2", label: "Parfois" },
-      { value: "4", label: "Jamais" }
+      { id: "0", value: "0", label: "Souvent" },
+      { id: "2", value: "2", label: "Parfois" },
+      { id: "4", value: "4", label: "Jamais" }
     ]
   }
 ];
@@ -75,11 +76,12 @@ export default function QualificationForm({ onNewResponses }: Props) {
   return (
     <Form>
       <Stack gap={4}>
-        {questions.map(({ name, question, options}) =>
+        {questions.map(({ questionId, question, options}) =>
           <ClosedQuestion
-            key={name}
+            key={questionId}
             question={question}
-            register={register(name, { required: true })}
+            questionId={questionId}
+            register={register(questionId, { required: true })}
             options={options}
           />
         )}
