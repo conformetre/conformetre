@@ -69,8 +69,7 @@ const questions: ClosedQuestionProps[] = [
 export default function QualificationForm({ onNewResponses }: Props) {
   const {
     register,
-    handleSubmit,
-    watch
+    handleSubmit
   } = useForm<FormResponses>()
   
   return (
@@ -87,7 +86,6 @@ export default function QualificationForm({ onNewResponses }: Props) {
         )}
         <Button onClick={handleSubmit((data) => computeResult(data))} variant="primary">Submit</Button>
       </Stack>
-      <pre>{JSON.stringify(watch(), null, 2)}</pre>
     </Form>
   )
 

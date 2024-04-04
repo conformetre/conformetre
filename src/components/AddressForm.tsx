@@ -15,10 +15,7 @@ type Props = {
 export default function AddressForm({ handleNewEstimation }: Props) {
   const {
     register,
-    handleSubmit,
-    formState: { errors },
-    getValues,
-    watch
+    handleSubmit
   } = useForm<{ address: string }>()
   const [showNotFoundError, setShowNotFoundError] = React.useState<Boolean>(false);
 
@@ -48,7 +45,6 @@ export default function AddressForm({ handleNewEstimation }: Props) {
         )}
 
       </Stack>
-      <pre>{JSON.stringify(watch(), null, 2)}</pre>
     </Form>
   )
 
