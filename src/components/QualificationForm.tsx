@@ -5,6 +5,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ClosedQuestion from './ClosedQuestion';
 
+type Props = {
+  onNewResponses: (result: number) => void;
+};
+
 type FormResponses = {
   temperature: string;
   humidity: string;
@@ -61,7 +65,7 @@ const questions: ClosedQuestionProps[] = [
 ];
 
 
-export default function QualificationForm() {
+export default function QualificationForm({ onNewResponses }: Props) {
   const {
     register,
     handleSubmit,
@@ -89,6 +93,6 @@ export default function QualificationForm() {
     const result = Object.values(formResponses).reduce((partialSum, valueAsString) => {
       return partialSum + parseInt(valueAsString);
     }, 3); // Start with 3 as we're missing the question on the revenue
-    console.log(result);
+    onNewResponses(result);
   }
 }

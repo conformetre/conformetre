@@ -9,14 +9,14 @@ import type { EconmicResults, EstimatedResults } from "../lib";
 
 
 export default function HomePage() {
-  const [formResult, setFormResult] = React.useState<(Pick<EstimatedResults, "dpe" | "surface"> & EconmicResults) | null>(null);
+  const [formResult, setFormResult] = React.useState<number | null>(null);
 
   return (
     <Container>
       <h1>Conformètre</h1>
       <h2>Testez votre confort en un éclair !</h2>
-      <QualificationForm/>
-      <QualifResults result={12}/>
+      <QualificationForm onNewResponses={setFormResult}/>
+      { formResult && (<QualifResults result={formResult}/>) }
       <Alert variant="primary">
         <b>Obtenez plus d'informations grace au <a href="/quantitatif">questionnaire quantitatif</a>.</b>
       </Alert>
