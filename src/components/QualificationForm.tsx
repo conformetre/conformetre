@@ -5,87 +5,96 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ClosedQuestion from './ClosedQuestion';
 
-type Answer = "veryBad" | "bad" | "ok";
+type Props = {
+  onNewResponses: (result: number) => void;
+};
 
-type Qualification = {
-  temperature: Answer;
-  humidity: Answer;
-  wind: Answer;
-  resources: Answer;
+type FormResponses = {
+  temperature: string;
+  humidity: string;
+  wind: string;
+  resources: string;
 }
 
 type ClosedQuestionProps = {
-  name: keyof Qualification;
+  questionId: keyof FormResponses;
   question: string;
   options: {
+    id: string;
     label: string;
-    value: Answer;
+    value: string;
   }[]
 };
 
 const questions: ClosedQuestionProps[] = [
   {
-    name: "temperature",
+    questionId: "temperature",
     question: "En hiver dans mon logement j'ai :",
     options: [
-      { value: "veryBad", label: "Très froid" },
-      { value: "bad", label: "Froid" },
-      { value: "ok", label: "Une bonne température" }
+      { id: "0", value: "0", label: "Très froid" },
+      { id: "3", value: "3", label: "Froid" },
+      { id: "6", value: "6", label: "Une bonne température" }
     ]
   },
   {
-    name: "humidity",
+    questionId: "humidity",
     question: "Dans mes pièces de vie (cuisine, salon, chambre) j'ai :",
     options: [
-      { value: "veryBad", label: "De l'humidité et des moisissures" },
-      { value: "bad", label: "De l'humidité" },
-      { value: "ok", label: "Une atmosphère saine" }
+      { id: "0", value: "0", label: "De l'humidité et des moisissures" },
+      { id: "3", value: "3", label: "De l'humidité" },
+      { id: "6", value: "6", label: "Une atmosphère saine" }
     ]
   },
   {
-    name: "wind",
+    questionId: "wind",
     question: "A l'intérieur je ressens des courants d'air :",
     options: [
-      { value: "veryBad", label: "Souvent" },
-      { value: "bad", label: "Parfois" },
-      { value: "ok", label: "Jamais" }
+      { id: "0", value: "0", label: "Souvent" },
+      { id: "2", value: "2", label: "Parfois" },
+      { id: "4", value: "4", label: "Jamais" }
     ]
   },
   {
-    name: "resources",
+    questionId: "resources",
     question: "Il m'arrive de me priver (alimentation, loisirs) pour payer ma facture d'énergie :",
     options: [
-      { value: "veryBad", label: "Souvent" },
-      { value: "bad", label: "Parfois" },
-      { value: "ok", label: "Jamais" }
+      { id: "0", value: "0", label: "Souvent" },
+      { id: "2", value: "2", label: "Parfois" },
+      { id: "4", value: "4", label: "Jamais" }
     ]
   }
 ];
 
 
-export default function QualificationForm() {
+export default function QualificationForm({ onNewResponses }: Props) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    getValues,
     watch
-  } = useForm<Qualification>()
+  } = useForm<FormResponses>()
   
   return (
     <Form>
       <Stack gap={4}>
-        {questions.map(({ name, question, options}) =>
+        {questions.map(({ questionId, question, options}) =>
           <ClosedQuestion
-            key={name}
+            key={questionId}
             question={question}
-            register={register(name)}
+            questionId={questionId}
+            register={register(questionId, { required: true })}
             options={options}
           />
         )}
-        <Button onClick={handleSubmit((data) => console.log(data))} variant="primary">Submit</Button>
+        <Button onClick={handleSubmit((data) => computeResult(data))} variant="primary">Submit</Button>
       </Stack>
       <pre>{JSON.stringify(watch(), null, 2)}</pre>
     </Form>
   )
+
+  function computeResult(formResponses: FormResponses) {
+    const result = Object.values(formResponses).reduce((partialSum, valueAsString) => {
+      return partialSum + parseInt(valueAsString);
+    }, 3); // Start with 3 as we're missing the question on the revenue
+    onNewResponses(result);
+  }
 }
