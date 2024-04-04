@@ -34,7 +34,7 @@ export default function QuantiResults({ conso_annuelle_m2, dpe, surface, yearlyC
         Votre logement a une surface de {surface} m².
         Cela correspond à un coût annuel de {formattedYearlyConso}.
       </div>
-      <Stack direction="horizontal" gap={2}>
+      <Stack direction="horizontal" gap={2} style={{ justifyContent: "center" }}>
         <Card border="warning" style={{ width: '18rem' }}>
           <Card.Header>Les revenus mensuels de votre foyer sont inférieurs à <b>{formattedMinRevenue}</b></Card.Header>
           <Card.Body>
