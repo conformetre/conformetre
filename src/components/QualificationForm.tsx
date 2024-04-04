@@ -67,8 +67,6 @@ export default function QualificationForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    getValues,
     watch
   } = useForm<Qualification>()
   

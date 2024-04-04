@@ -21,13 +21,6 @@ export default function HomePage() {
       </Alert>
     </Container>
   )
-
-  function computeAndShowResults(estimation: Pick<EstimatedResults, "dpe" | "surface">) {
-    setFormResult({
-      ...estimation,
-      ...computeSalary(estimation)
-    });
-  }
 }
 
 export const Head: HeadFC = () => <title>Conformètre</title>
