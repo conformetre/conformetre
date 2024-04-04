@@ -45,7 +45,7 @@ export default function DpeAndSurfaceForm({ onNewResponses }: Props) {
         <Button
           onClick={handleSubmit(onNewResponses)}
           variant="primary">
-            Submit
+            Estimer la consomation du logement
         </Button>
       </Stack>
     </Form>

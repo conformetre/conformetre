@@ -84,7 +84,7 @@ export default function QualificationForm({ onNewResponses }: Props) {
             options={options}
           />
         )}
-        <Button onClick={handleSubmit((data) => computeResult(data))} variant="primary">Submit</Button>
+        <Button onClick={handleSubmit((data) => computeResult(data))} variant="primary">Obtenir le resultat</Button>
       </Stack>
     </Form>
   )

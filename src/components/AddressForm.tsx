@@ -36,7 +36,7 @@ export default function AddressForm({ handleNewEstimation }: Props) {
         <Button
           onClick={handleSubmit(async (data) => searchDPEAndHandleRes(data.address))}
           variant="primary">
-            Submit
+            Chercher le logement
         </Button>
         { showNotFoundError && (
           <Alert variant="warning" onClose={() => setShowNotFoundError(false)} dismissible>
