@@ -26,7 +26,6 @@ export default function AddressForm({ handleNewEstimation }: Props) {
     <Form>
       <Stack gap={4}>
         <InputWithLabel
-          defaultValue={placeholder}
           id="address"
           label={label}
           placeholder={placeholder}
