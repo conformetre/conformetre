@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ClosedQuestion from './ClosedQuestion';
 
-type Qualification = {
+type FormResponses = {
   temperature: string;
   humidity: string;
   wind: string;
@@ -13,7 +13,7 @@ type Qualification = {
 }
 
 type ClosedQuestionProps = {
-  name: keyof Qualification;
+  name: keyof FormResponses;
   question: string;
   options: {
     label: string;
@@ -66,7 +66,7 @@ export default function QualificationForm() {
     register,
     handleSubmit,
     watch
-  } = useForm<Qualification>()
+  } = useForm<FormResponses>()
   
   return (
     <Form>
