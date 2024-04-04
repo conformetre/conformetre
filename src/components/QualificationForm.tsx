@@ -79,9 +79,16 @@ export default function QualificationForm() {
             options={options}
           />
         )}
-        <Button onClick={handleSubmit((data) => console.log(data))} variant="primary">Submit</Button>
+        <Button onClick={handleSubmit((data) => computeResult(data))} variant="primary">Submit</Button>
       </Stack>
       <pre>{JSON.stringify(watch(), null, 2)}</pre>
     </Form>
   )
+
+  function computeResult(formResponses: FormResponses) {
+    const result = Object.values(formResponses).reduce((partialSum, valueAsString) => {
+      return partialSum + parseInt(valueAsString);
+    }, 3); // Start with 3 as we're missing the question on the revenue
+    console.log(result);
+  }
 }
