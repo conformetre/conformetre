@@ -20,12 +20,10 @@ type FormResponses = {
 export default function DpeAndSurfaceForm({ onNewResponses }: Props) {
   const {
     register,
-    handleSubmit,
-    watch
+    handleSubmit
   } = useForm<FormResponses>();
 
   const dpeLabel = "Renseignez le DPE de votre logement";
-  const dpePlaceholder = "D";
   const surfaceLabel = "Renseignez la surface de votre logement";
   const surfacePlaceholder = "38";
 
@@ -47,10 +45,9 @@ export default function DpeAndSurfaceForm({ onNewResponses }: Props) {
         <Button
           onClick={handleSubmit(onNewResponses)}
           variant="primary">
-            Submit
+            Estimer la consomation du logement
         </Button>
       </Stack>
-      <pre>{JSON.stringify(watch(), null, 2)}</pre>
     </Form>
   );
 }

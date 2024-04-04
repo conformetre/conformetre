@@ -14,7 +14,7 @@ type Props = {
 export default function InputWithLabel({ defaultValue, id, label, placeholder, register, type }: Props) {
   return (
     <Form.Group controlId={id}>
-        <Form.Label>{label}</Form.Label>
+        <Form.Label style={{ fontWeight: "bold" }}>{label}</Form.Label>
         <Form.Control
             type={type}
             placeholder={placeholder}

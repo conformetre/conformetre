@@ -34,14 +34,13 @@ export default function QuantiResults({ conso_annuelle_m2, dpe, surface, yearlyC
         Votre logement a une surface de {surface} m².
         Cela correspond à un coût annuel de {formattedYearlyConso}.
       </div>
-      <Stack direction="horizontal" gap={2}>
+      <Stack direction="horizontal" gap={2} style={{ justifyContent: "center" }}>
         <Card border="warning" style={{ width: '18rem' }}>
           <Card.Header>Les revenus mensuels de votre foyer sont inférieurs à <b>{formattedMinRevenue}</b></Card.Header>
           <Card.Body>
             <Card.Title>Vous êtes probablement en précarité énergétique</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              Votre situation énergétique est bonne, vous pouvez trouver des conseils pour aller plus loin.
             </Card.Text>
           </Card.Body>
         </Card>
@@ -50,8 +49,7 @@ export default function QuantiResults({ conso_annuelle_m2, dpe, surface, yearlyC
           <Card.Body>
             <Card.Title>Vous n'êtes probablement pas en précarité énergétique</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              Vous êtes dans une situation anormale, vous pouvez être accompagné·e sur ce sujet.
             </Card.Text>
           </Card.Body>
         </Card>

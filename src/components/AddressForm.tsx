@@ -15,10 +15,7 @@ type Props = {
 export default function AddressForm({ handleNewEstimation }: Props) {
   const {
     register,
-    handleSubmit,
-    formState: { errors },
-    getValues,
-    watch
+    handleSubmit
   } = useForm<{ address: string }>()
   const [showNotFoundError, setShowNotFoundError] = React.useState<Boolean>(false);
 
@@ -29,7 +26,6 @@ export default function AddressForm({ handleNewEstimation }: Props) {
     <Form>
       <Stack gap={4}>
         <InputWithLabel
-          defaultValue={placeholder}
           id="address"
           label={label}
           placeholder={placeholder}
@@ -39,7 +35,7 @@ export default function AddressForm({ handleNewEstimation }: Props) {
         <Button
           onClick={handleSubmit(async (data) => searchDPEAndHandleRes(data.address))}
           variant="primary">
-            Submit
+            Chercher le logement
         </Button>
         { showNotFoundError && (
           <Alert variant="warning" onClose={() => setShowNotFoundError(false)} dismissible>
@@ -48,7 +44,6 @@ export default function AddressForm({ handleNewEstimation }: Props) {
         )}
 
       </Stack>
-      <pre>{JSON.stringify(watch(), null, 2)}</pre>
     </Form>
   )
 
