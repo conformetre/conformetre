@@ -12,7 +12,7 @@ type Props = {
 export default function DpeSelector({ id, label, register }: Props) {
   return (
     <Form.Group controlId={id}>
-        <Form.Label>{label}</Form.Label>
+        <Form.Label style={{ fontWeight: "bold" }}>{label}</Form.Label>
         <Form.Select {...register} aria-label={label}>
           {DPE_IDS.map(dpeId =>
             <option value={dpeId}>{dpeId}</option>

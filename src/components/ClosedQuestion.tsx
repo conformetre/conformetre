@@ -21,7 +21,7 @@ export default function ClosedQuestion({ question, questionId, options, register
   return (
     <Form.Group>
       <Stack gap={2}>
-        <Form.Label>{question}</Form.Label>
+        <Form.Label style={{ fontWeight: "bold" }}>{question}</Form.Label>
         <Stack gap={1}>
           {options.map(option =>
             <Form.Check
