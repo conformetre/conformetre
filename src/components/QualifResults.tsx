@@ -17,6 +17,9 @@ export default function QualifResults({ result }: Props) {
       <Alert variant={textResult.variant}>
         {textResult.text}
       </Alert>
+      <Alert variant="primary">
+        <b>Obtenez plus d'informations grace au <a href="/quantitatif">questionnaire quantitatif</a>.</b>
+      </Alert>
     </Stack>
   )
 
