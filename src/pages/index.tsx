@@ -3,7 +3,7 @@ import * as React from "react"
 import type { HeadFC } from "gatsby"
 import Alert from 'react-bootstrap/Alert';
 import Container from 'react-bootstrap/Container';
-import { QualificationForm } from '../components';
+import { QualificationForm, QualifResults } from '../components';
 import { computeSalary } from "../lib";
 import type { EconmicResults, EstimatedResults } from "../lib";
 
@@ -16,6 +16,7 @@ export default function HomePage() {
       <h1>Conformètre</h1>
       <h2>Testez votre confort en un éclair !</h2>
       <QualificationForm/>
+      <QualifResults result={12}/>
       <Alert variant="primary">
         <b>Obtenez plus d'informations grace au <a href="/quantitatif">questionnaire quantitatif</a>.</b>
       </Alert>
