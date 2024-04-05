@@ -17,7 +17,7 @@ export default function QuantitativePage() {
     <Container style={{ maxWidth: 800 }}>
       <Stack gap={5}>
         <div>
-          <h1>Conformètre</h1>
+          <h1>EnerDiag</h1>
           <h2>Questionnaire quantitatif</h2>
         </div>
         <Tabs defaultActiveKey="address" >
@@ -49,5 +49,5 @@ export default function QuantitativePage() {
   }
 }
 
-export const Head: HeadFC = () => <title>Conformètre - quantitatif</title>
+export const Head: HeadFC = () => <title>EnerDiag - quantitatif</title>
 

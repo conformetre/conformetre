@@ -13,7 +13,7 @@ export default function HomePage() {
     <Container style={{ maxWidth: 800 }}>
       <Stack gap={5}>
         <div>
-          <h1>Conformètre</h1>
+          <h1>EnerDiag</h1>
           <h2>Testez votre confort en un éclair !</h2>
         </div>
         <QualificationForm onNewResponses={setFormResult}/>
@@ -23,5 +23,5 @@ export default function HomePage() {
   )
 }
 
-export const Head: HeadFC = () => <title>Conformètre</title>
+export const Head: HeadFC = () => <title>EnerDiag</title>
 
