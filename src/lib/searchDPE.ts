@@ -16,7 +16,10 @@ export async function searchDPE(address: string) {
 }
 
 async function searchAddress(address: string): Promise<EnrichedAddress> {
-    const url = `${adressEnpoint}?q=${encodeURIComponent(address)}`;
+    const searchParams = new URLSearchParams({
+        q: address
+    });
+    const url = `${adressEnpoint}?${searchParams.toString()}`;
     const response = await (await fetch(url)).json();
     const firstMatch = response.features[0];
     return {
