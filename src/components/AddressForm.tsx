@@ -33,7 +33,7 @@ export default function AddressForm({ handleNewEstimation }: Props) {
   }, [selected])
 
   const label = "Entrez votre adresse postale";
-  const placeholder = "14 Allee Sainte Therese 38700 Corenc";
+  const placeholder = "5 Esplanade Andry Farcy, 38000 Grenoble";
 
   return (
     <Form>
