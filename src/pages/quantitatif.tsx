@@ -41,7 +41,9 @@ export default function QuantitativePage() {
     </Container>
   )
 
-  function computeAndShowResults(estimation: Pick<EstimatedResults, "dpe" | "surface">) {
+  function computeAndShowResults(estimation: Pick<EstimatedResults, "dpe" | "surface"> | null) {
+    if(! estimation) { return setFormResult(null); }
+
     setFormResult({
       ...estimation,
       ...computeSalary(estimation)

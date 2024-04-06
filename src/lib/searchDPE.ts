@@ -16,7 +16,11 @@ export async function searchDPE(address: string) {
 }
 
 async function searchAddress(address: string): Promise<EnrichedAddress> {
-    const url = `${adressEnpoint}?q=${encodeURIComponent(address)}`;
+    const searchParams = new URLSearchParams({
+        q: address,
+        type: "housenumber"
+    });
+    const url = `${adressEnpoint}?${searchParams.toString()}`;
     const response = await (await fetch(url)).json();
     const firstMatch = response.features[0];
     return {
@@ -24,7 +28,7 @@ async function searchAddress(address: string): Promise<EnrichedAddress> {
         lat: firstMatch.geometry.coordinates[1],
         street: firstMatch.properties.street,
         houseNumber: firstMatch.properties.housenumber
-    }
+    };
 }
 
 export type EstimatedResults = {
@@ -40,12 +44,12 @@ export type EstimatedResults = {
     complement_address: string;
 };
 
-async function getDPE({ lon, lat, street, houseNumber }: EnrichedAddress): Promise<EstimatedResults[] | null> {
+async function getDPE({ lon, lat, street, houseNumber }: EnrichedAddress): Promise<EstimatedResults[]> {
     const coord = `${lon}:${lat}`;
     const url = `${dpeEndpoint}&geo_distance=${encodeURIComponent(coord)},50`;
     const response = await (await fetch(url)).json();
     const matchedAddresses = response.results.filter(r => r['Nom__rue_(BAN)'] === street && r['N°_voie_(BAN)'] === houseNumber);
-    if (!matchedAddresses.length) return Promise.reject(`DPE not found`);
+    if (! matchedAddresses.length) { throw new Error(`DPE not found`); }
     return matchedAddresses.map(address => ({
         id: address['N°DPE'],
         surface: address['Surface_habitable_logement'],
