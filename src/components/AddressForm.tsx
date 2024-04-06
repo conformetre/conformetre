@@ -10,7 +10,7 @@ import type { EstimatedResults } from "../lib/";
 import { ListGroup } from "react-bootstrap";
 
 type Props = {
-  handleNewEstimation: (results: EstimatedResults) => void;
+  handleNewEstimation: (results: EstimatedResults | null) => void;
 }
 
 export default function AddressForm({ handleNewEstimation }: Props) {
@@ -20,17 +20,15 @@ export default function AddressForm({ handleNewEstimation }: Props) {
   } = useForm<{ address: string }>()
   const [showNotFoundError, setShowNotFoundError] = React.useState<Boolean>(false);
   const [results, setResults] = React.useState<EstimatedResults[]>([]);
-  const [selected, setSelected] = React.useState<EstimatedResults>();
+  const [selected, setSelected] = React.useState<EstimatedResults | null>(null);
 
   React.useEffect(() => {
-    if (! results.length) { return; }
+    if (! results.length) { return setSelected(null); }
 
     setSelected(results[0])
   }, [results])
 
   React.useEffect(() => {
-    if (! selected) { return; }
-
     handleNewEstimation(selected)
   }, [selected])
 
@@ -54,7 +52,7 @@ export default function AddressForm({ handleNewEstimation }: Props) {
         </Button>
         <ListGroup defaultActiveKey="#link1">
           {results && results.length > 1 && results.map(result =>
-            <ListGroup.Item as="li" action active={selected && result.id === selected.id} onClick={() => setSelected(result)} style={{ cursor: 'pointer' }}>
+            <ListGroup.Item as="li" action active={!! selected && result.id === selected.id} onClick={() => setSelected(result)} style={{ cursor: 'pointer' }}>
               {result.num_address} {result.nom_rue} {result.surface}m² {result.complement_address}
             </ListGroup.Item>
           )}
