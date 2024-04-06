@@ -17,7 +17,8 @@ export async function searchDPE(address: string) {
 
 async function searchAddress(address: string): Promise<EnrichedAddress> {
     const searchParams = new URLSearchParams({
-        q: address
+        q: address,
+        type: "housenumber"
     });
     const url = `${adressEnpoint}?${searchParams.toString()}`;
     const response = await (await fetch(url)).json();
