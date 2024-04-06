@@ -75,6 +75,5 @@ export default function AddressForm({ handleNewEstimation }: Props) {
     }
 
     setResults(results);
-    if (results.length === 1) handleNewEstimation(results[0])
   }
 }
