@@ -44,7 +44,7 @@ export type EstimatedResults = {
     complement_address: string;
 };
 
-async function getDPE({ lon, lat, street, houseNumber }: EnrichedAddress): Promise<EstimatedResults[] | null> {
+async function getDPE({ lon, lat, street, houseNumber }: EnrichedAddress): Promise<EstimatedResults[]> {
     const coord = `${lon}:${lat}`;
     const url = `${dpeEndpoint}&geo_distance=${encodeURIComponent(coord)},50`;
     const response = await (await fetch(url)).json();
