@@ -23,12 +23,14 @@ export default function AddressForm({ handleNewEstimation }: Props) {
   const [selected, setSelected] = React.useState<EstimatedResults>();
 
   React.useEffect(() => {
-    if (!results.length) return
+    if (! results.length) { return; }
+
     setSelected(results[0])
   }, [results])
 
   React.useEffect(() => {
-    if (!selected) return
+    if (! selected) { return; }
+
     handleNewEstimation(selected)
   }, [selected])
 
