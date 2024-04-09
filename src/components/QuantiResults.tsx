@@ -36,20 +36,20 @@ export default function QuantiResults({ conso_annuelle_m2, dpe, surface, yearlyC
       </div>
       <Stack direction="horizontal" gap={2} style={{ justifyContent: "center" }}>
         <Card border="warning" style={{ width: '18rem' }}>
-          <Card.Header>Les revenus mensuels de votre foyer sont inférieurs à <b>{formattedMinRevenue}</b></Card.Header>
+          <Card.Header>Les revenus mensuels de votre foyer sont <b>inférieurs à {formattedMinRevenue}</b></Card.Header>
           <Card.Body>
             <Card.Title>Vous êtes probablement en précarité énergétique</Card.Title>
             <Card.Text>
-              Votre situation énergétique est bonne, vous pouvez trouver des conseils pour aller plus loin.
+              Vous êtes dans une situation anormale, vous pouvez être accompagné·e sur ce sujet.
             </Card.Text>
           </Card.Body>
         </Card>
         <Card border="info" style={{ width: '18rem' }}>
-          <Card.Header>Les revenus mensuels de votre foyer sont supérieurs à <b>{formattedMinRevenue}</b></Card.Header>
+          <Card.Header>Les revenus mensuels de votre foyer sont <b>supérieurs à {formattedMinRevenue}</b></Card.Header>
           <Card.Body>
             <Card.Title>Vous n'êtes probablement pas en précarité énergétique</Card.Title>
             <Card.Text>
-              Vous êtes dans une situation anormale, vous pouvez être accompagné·e sur ce sujet.
+              Votre situation énergétique est bonne, vous pouvez trouver des conseils pour aller plus loin.
             </Card.Text>
           </Card.Body>
         </Card>

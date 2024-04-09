@@ -30,7 +30,7 @@ export default function QuantitativePage() {
         </Tabs>
         { formResult && (
           <QuantiResults
-            conso_annuelle_m2={formResult.surface}
+            conso_annuelle_m2={formResult.conso_annuelle_m2}
             dpe={formResult.dpe}
             yearlyMinRevenue={formResult.minRevenue}
             surface={formResult.surface}
