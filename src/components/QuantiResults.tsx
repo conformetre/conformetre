@@ -1,6 +1,7 @@
 import * as React from "react"
 import Card from 'react-bootstrap/Card';
 import Stack from "react-bootstrap/Stack";
+import ExternalResources from "./ExternalResources";
 
 type Option = {
   label: string;
@@ -54,6 +55,7 @@ export default function QuantiResults({ conso_annuelle_m2, dpe, surface, yearlyC
           </Card.Body>
         </Card>
       </Stack>
+      <ExternalResources/>
     </Stack>
   )
 }
